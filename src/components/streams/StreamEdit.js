@@ -8,7 +8,13 @@ import history from '../../history';
 
 const StreamEdit = (props)=>{
     useEffect(()=>{
-    props.fetchStream(props.match.params.id);
+        if(props.isSignedIn){
+            if(props.stream.userId === props.currentUserId){
+            props.fetchStream(props.match.params.id);
+            }
+        }else{
+            history.push('/');
+        }
     },[]);
     
 
@@ -48,7 +54,10 @@ const StreamEdit = (props)=>{
 };
 
 const mapStateToProps = (state, ownProps)=>{
-    return  { stream: state.streams[ownProps.match.params.id] }
+    return  { stream: state.streams[ownProps.match.params.id],
+              isSignedIn: state.auth.isSignedIn,
+              currentUserId: state.auth.userId
+            }
 };
 
 export default connect(mapStateToProps, { fetchStream, editStream }) (StreamEdit);

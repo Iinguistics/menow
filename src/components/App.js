@@ -6,6 +6,7 @@ import StreamDelete from './streams/StreamDelete';
 import StreamEdit from './streams/StreamEdit';
 import StreamList from './streams/StreamList';
 import StreamShow from './streams/StreamShow';
+import StreamKey from './streams/StreamKey';
 import history from '../history';
 import { ToastProvider } from 'react-toast-notifications';
 import '../stylesheets/App.css';
@@ -15,7 +16,6 @@ import '../stylesheets/App.css';
 
 
 const App = ()=>{
-
 
     return(
         <div className="ui container">
@@ -29,6 +29,7 @@ const App = ()=>{
             <Route path="/streams/edit/:id" exact component={StreamEdit} />
             <Route path="/streams/delete/:id" exact component={StreamDelete} />
             <Route path="/streams/:id" exact component={StreamShow} />
+            <Route path="/mykey" exact component={StreamKey} />
            </Switch>
             </ToastProvider>
             </div>

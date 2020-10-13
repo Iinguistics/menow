@@ -30,7 +30,7 @@ class StreamShow extends React.Component{
         }
         this.player = flv.createPlayer({
             type: 'flv',
-            url: `http://localhost:8000/live/${this.props.match.params.id}.flv`
+            url: `http://localhost:8000/live/${this.props.currentUserId}.flv`
         });
         this.player.attachMediaElement(this.videoRef.current);
         this.player.load();
@@ -64,7 +64,9 @@ class StreamShow extends React.Component{
 
 
 const mapStateToProps = (state, ownProps)=>{
-    return { stream: state.streams[ownProps.match.params.id] }
+    return { stream: state.streams[ownProps.match.params.id],
+             currentUserId: state.auth.userId
+           }
 }
 
 export default connect(mapStateToProps, { fetchStream }) (StreamShow);

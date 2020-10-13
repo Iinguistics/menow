@@ -59,3 +59,9 @@ export const signOut = () => {
     dispatch({ type: EDIT_STREAM, payload: res.data });
     history.push('/');
   };
+
+  export const fetchKey = (getState) => async dispatch =>{
+     const { userId } = getState().auth;
+
+    dispatch({ type: "FETCH_KEY", payload: userId });
+  };

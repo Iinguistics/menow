@@ -12,6 +12,9 @@ const Header = ({ isSignedIn })=>{
                    <Link to="/streams/new" className="item">
                      Create new stream
                  </Link>
+                 <Link to="/mykey" className="item">
+                     View your streaming key
+                 </Link>
                </div>
            )
        }
