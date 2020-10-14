@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
-
+import history from '../history';
 
 class GoogleAuth extends Component{
    
@@ -31,8 +31,9 @@ class GoogleAuth extends Component{
     this.auth.signOut();
     }
 
-    signIn = ()=>{
-    this.auth.signIn();
+    signIn = async()=>{
+    await this.auth.signIn();
+    history.go('/');
     }
 
 
