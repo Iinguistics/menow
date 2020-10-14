@@ -49,7 +49,7 @@ export const signOut = () => {
   export const deleteStream = (id) => async dispatch =>{
          await streams.delete(`/streams/${id}`);
     
-    history.push('/');
+    history.go('/');
     dispatch({ type: DELETE_STREAM, payload: id });
   };
 
